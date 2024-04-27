@@ -43,6 +43,17 @@ func main() {
 		checkErr(err)
 		fmt.Println("Общие делители для введенных чисел:")
 		fmt.Println(res)
+	case 3:
+		fmt.Println("Введите минимум и максимум, между которыми нужно найти простые числа.")
+		var min, max int
+		_, err := fmt.Scanln(&min, &max)
+		checkErr(err)
+
+		res, err := PrimeNumbers(min, max)
+		checkErr(err)
+
+		fmt.Println("Простые числа между минимумом и максимумом:")
+		fmt.Println(res)
 	}
 }
 
