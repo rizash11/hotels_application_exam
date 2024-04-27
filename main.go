@@ -11,7 +11,7 @@ func main() {
 	fmt.Println("Функцию какой задачи запустить?")
 
 	_, err := fmt.Scanln(&nProblem)
-	fatalErr(err)
+	checkErr(err)
 	if nProblem < 1 || nProblem > 4 {
 		log.Fatalln("нет такой задачи")
 	}
@@ -21,16 +21,32 @@ func main() {
 		var nLaptops int
 		fmt.Println("Введите количество компьютеров:")
 		_, err = fmt.Scanln(&nLaptops)
-		fatalErr(err)
+		checkErr(err)
 
 		res, err := Laptops(nLaptops)
-		fatalErr(err)
+		checkErr(err)
 
+		fmt.Println(res)
+	case 2:
+		var nNumbers []int
+		var nNumber int
+		fmt.Println("Введите числа, делители которых необходимо найти. Чтобы остановить ввод чисел, введите любой символ не являющийся цифрой.")
+		for {
+			_, err := fmt.Scan(&nNumber)
+			if err != nil {
+				break
+			}
+			nNumbers = append(nNumbers, nNumber)
+		}
+
+		res, err := CommonDivisors(nNumbers)
+		checkErr(err)
+		fmt.Println("Общие делители для введенных чисел:")
 		fmt.Println(res)
 	}
 }
 
-func fatalErr(err error) {
+func checkErr(err error) {
 	if err != nil {
 		log.Fatalln(err)
 	}
