@@ -10,7 +10,7 @@ func CommonDivisors(Numbers []int) ([]int, error) {
 	}
 
 outer:
-	for i := 2; i < min; i++ {
+	for i := 2; i <= min/2; i++ {
 		for _, num := range Numbers {
 			if num%i != 0 {
 				continue outer
